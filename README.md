@@ -1,18 +1,16 @@
-# cljs-reagent-reframe-twind-boilerplate
+# cljs-reagent-reframe-unocss-boilerplate
 
 An opinionated boilerplate for Reagent app.
 
 - [shadow-cljs](https://github.com/thheller/shadow-cljs)
 - [reagent](https://github.com/reagent-project/reagent) (react on dev mode & preact on production)
 - [re-frame](https://github.com/day8/re-frame)
-- [twind](https://twind.dev)
+- [unocss](https://github.com/unocss/unocss)
 
 ### Installation
 
 ```bash
 npm install
-# or 
-yarn install
 ```
 
 ### Development
