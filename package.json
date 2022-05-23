@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "concurrently \"npm run build:css -- --watch\" \"shadow-cljs watch web\"",
-    "build": "npm run build:js && npm run build:css",
+    "build": "npm run build:js",
     "build:js": "shadow-cljs release --verbose web",
     "build:css": "npx unocss \"build/js/**/*.js\" \"build/js/main.js\" --out-file \"build/css/main.css\"",
     "serve": "serve build"
