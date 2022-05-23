@@ -12,7 +12,7 @@
 (defn hero []
   (let [name (rf/subscribe [::subs/name])]
     [:div {:class "p-20 rounded text-center shadow-md font-normal font-sans bg-blue-400"}
-     [:h2 {:class "text-xl" :color "teal-500"}
+     [:h2 {:class "text-xl text-teal-500"}
       "Hello " @name " !"]
      [:h3
       "Welcome"]]))
