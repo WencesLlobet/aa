@@ -6,7 +6,7 @@
     "dev": "concurrently \"npm run build:css -- --watch\" \"shadow-cljs watch web\"",
     "build": "npm run build:js && npm run build:css",
     "build:js": "shadow-cljs release --verbose web",
-    "build:css": "npx unocss \"build/js/**/*.js\" --out-file \"build/css/uno.css\"",
+    "build:css": "npx unocss \"build/js/**/*.js\" --out-file \"build/css/main.css\"",
     "serve": "serve build"
   },
   "devDependencies": {

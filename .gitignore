@@ -1,8 +1,7 @@
 node_modules/
 
 /build/**/js
-/build/**/css
-/build/main.css
+/build/css/main.css
 
 pom.xml
 pom.xml.asc
