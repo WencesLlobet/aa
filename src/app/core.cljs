@@ -1,20 +1,20 @@
 (ns app.core
-  (:require
-   [re-frame.core :as rf]
-   [reagent.core :as r]
-   [reagent.dom :as rdom]
-   [app.events :as events]
-   [app.subs :as subs]
-   ["react-helmet" :refer [Helmet]]
-   ["react-router-dom" :refer (Route BrowserRouter Outlet NavLink Routes)]))
-
+  (:require [re-frame.core :as rf]
+            [reagent.core :as r]
+            [reagent.dom :as rdom]
+            ["react-dom/client" :refer [createRoot]]
+            [app.events :as events]
+            [app.subs :as subs]
+            [app.utils :as ut]
+            ["react-helmet" :refer [Helmet]]
+            ["react-router-dom" :refer (Route BrowserRouter Outlet NavLink Routes)]))
 
 (defn hero []
   (let [name (rf/subscribe [::subs/name])]
-    [:div {:class "p-20 rounded text-center shadow-md font-normal font-sans bg-blue-400"}
-     [:h2 {:class "text-xl text-teal-900"}
+    [:div {:class "p-20 rounded text-center shadow-md font-normal font-sans bg-blue-200"}
+     [:h2 {:class "text-2xl text-teal-900"}
       "Hello " @name " !"]
-     [:h3
+     [:h3 {:class "text-xl"}
       "Welcome"]]))
 
 (defn index []
@@ -22,6 +22,11 @@
    [:> Helmet [:title "Home"]]
    [:h2 "Home"]
    [hero]])
+
+(defn transactions []
+  [:div
+   [:> Helmet [:title "Transactions"]]
+   [:h2 "Transactions"]])
 
 (defn users []
   [:div
@@ -44,6 +49,7 @@
        ^{:key path} [:li (navigation-link label path)]) links)]])
 
 (def links [{:path "/" :index true :label "Home" :element index}
+            {:path "/transactions" :label "Transactions" :element transactions}
             {:path "/about" :label "About" :element about}
             {:path "/users" :label "Users" :element users}])
 
@@ -62,15 +68,21 @@
                 :element (r/as-element [:> (r/reactify-component (:element link))])}])
    links))
 
-(defn root []
+(defn app []
   [:> BrowserRouter
    [:> Routes
     [:> Route {:path "/" :element (r/as-element [:> (r/reactify-component layout)])}
      (pages links)]]])
 
+;; (def container (js/document.getElementById "main"))
+;; (def root (if root root (createRoot container)))
+
+(defonce root (createRoot
+               (.getElementById js/document "main")))
+
 (defn mount-root
   []
-  (rdom/render [root] (js/document.getElementById "main")))
+  (.render root (ut/->element [app])))
 
 (defn init []
   (rf/dispatch-sync [:initialize-db]))

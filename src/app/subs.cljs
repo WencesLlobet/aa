@@ -2,7 +2,7 @@
   (:require [re-frame.core :as re-frame]))
 
 (def default-db
-  {:name "Shadow-cljs - Reagent/Reframe - Twind boilerplate"})
+  {:name "Shadow-cljs - Reagent/Reframe - Unocss boilerplate"})
 
 (re-frame/reg-sub
  ::name
