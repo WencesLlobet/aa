@@ -43,7 +43,7 @@
 
 (defn navigation-bar [links]
   [:nav
-   [:ul {:class "flex flex-row space-x-4"}
+   [:ul {:class "flex flex-row gap-6"}
     (map
      (fn [{:keys [path label]}]
        ^{:key path} [:li (navigation-link label path)]) links)]])
