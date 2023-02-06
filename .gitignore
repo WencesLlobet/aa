@@ -15,11 +15,11 @@ pom.xml.asc
 .hgignore
 .hg/
 
+.cpcache
 .vscode/
 .lsp/
 # Local Netlify folder
 .netlify
 
 .calva/
-.nvmrc
-.clj-kondo
+.clj-kondo/.cache/
